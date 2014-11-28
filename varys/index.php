@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Varys (Comment Moderation)
-Plugin URI: http://alancole.io/varys
+Plugin URI: http:/github.com/waxim/varys
 Description: The plugin adds some advanced comment moderation tools. Lord Varys hears everything!
 Version: 0.0.1 (Alpha)
 Author: Alan Cole
@@ -47,7 +47,7 @@ function check_reasons($comment){
           preg_match($pattern, $text, $matches);
           if(count($matches) > 0){ $reason[] = "Comment body matched the blocked word (".implode(",",$matches).")"; }
           $matches = array();
-          
+
           // check for blocked user names or emails
           preg_match($pattern, $author, $matches);
           preg_match($pattern, $email, $matches2);
