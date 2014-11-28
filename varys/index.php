@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Varys (Comment Moderation)
-Plugin URI: http:/github.com/waxim/varys
+Plugin URI: http://github.com/waxim/varys
 Description: The plugin adds some advanced comment moderation tools. Lord Varys hears everything!
 Version: 0.0.1 (Alpha)
 Author: Alan Cole
@@ -14,10 +14,10 @@ function check_reasons($comment){
   $text = $comment->comment_content;
   $text = apply_filters('comment_text', $text);
 
-  $ip_address = $comment->comment_ipaddress;
+  $ip = $comment->comment_author_IP;
   $author = $comment->comment_author;
-  $email = $comment->comment_email;
-  $useragent = $comment->useragent;
+  $email = $comment->comment_author_email;
+  $useragent = $comment->comment_agent;
 
   $reason = [];
 
@@ -51,7 +51,7 @@ function check_reasons($comment){
           // check for blocked user names or emails
           preg_match($pattern, $author, $matches);
           preg_match($pattern, $email, $matches2);
-          if(count($matches) > 0 || count($matches2) > 0){ $reason[] = "Comment author or email is blocked (".implode(",",$matches) . implode(",",$matches) .")"; }
+          if(count($matches) > 0 || count($matches2) > 0){ $reason[] = "Comment author or email is blocked."; }
           $matches = array();
 
           // check for blocked useragents
